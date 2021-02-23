@@ -1,3 +1,5 @@
+const msg = document.querySelector('.msg');
+const emailInput = document.querySelector('#email');
 const backToTopButton = document.querySelector("#back-to-top-btn");
 
 window.addEventListener("scroll", scrollFunction);
@@ -39,3 +41,21 @@ lightbox.addEventListener('click', e => {
     if (e.target !== e.currentTarget) return
     lightbox.classList.remove('active')
 })
+
+function ValidateEmail(inputText) {
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (inputText.value.match(mailformat)) {
+        msg.innerHTML = 'Email successfully recorded';
+        document.form1.text1.focus();
+        //Clear fields
+        inputText.value = '';
+        return true;
+    }
+    else {
+        msg.innerHTML = 'Invalid email address';
+        document.form1.text1.focus();
+        //Clear fields
+        inputText.value = '';
+        return false;
+    }
+}
